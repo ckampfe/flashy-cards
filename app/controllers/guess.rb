@@ -1,7 +1,7 @@
 get '/decks/:deck_id/cards/:card_id' do
   @current_round = Round.where("id = ?", sessions[:round_id]).first
   @deck = Deck.where("id = ?",  params[:deck_id]).first
-  @card = @current_round.get_random_unsolved_card #Round.get_random_unsolved_card NOT YET IMPLEMENTED
+  @card = @current_round.get_random_unsolved_card
 
   erb :display_flash_card
 end
@@ -17,7 +17,7 @@ post '/decks/:deck_id/cards/:card_id' do
   @guess = Guess.new(:round_id => @current_round.id, :card_id => @card.id, :response => user_response, :correct => response_validity)
   @guess.save
 
-  if @current_round.get_unsolved_cards.length > 0 # Round.get_unsolved_cards NOT YET IMPLEMENTED
+  if @current_round.get_unsolved_cards.length > 0
     redirect to '/guesses/:guess_id'
   else
     redirect to '/' # NOT THE CORRECT TARGET, NOT SURE WHICH URL TO REDIRECT TO YET
