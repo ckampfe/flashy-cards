@@ -18,7 +18,7 @@ class Round < ActiveRecord::Base
     unsolved_cards = []
 
     cards_in_deck.each do |card|
-      guesses_for_this_card = Guesses.where("round_id = ? AND card_id = ?", current_round.id, card.id)
+      guesses_for_this_card = Guess.where("round_id = ? AND card_id = ?", current_round.id, card.id)
 
       card_is_unsolved = true
 
