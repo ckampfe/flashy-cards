@@ -5,7 +5,7 @@ class Card < ActiveRecord::Base
   has_many :rounds, :through => :guesses
 
   def valid_response?(user_answer)
-    card.answer.strip == user_answer.strip
+    self.answer.strip == user_answer.strip
   end
 
 end
