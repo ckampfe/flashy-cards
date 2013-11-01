@@ -1,5 +1,14 @@
 get '/decks/:deck_id/cards/:card_id' do
   @current_round = Round.where("id = ?", sessions[:round_id]).first
+
+  #TESTING CODE
+  # user = User.create(:email => "kent@gmail.com", :password => 12345)
+  # user.decks << Deck.where("id = ?", 1).first
+  # user.save
+
+  # @current_round = Round.create(:user_id => user.id, :deck_id => user.decks.first.id)
+  #END TESTING CODE
+
   @deck = Deck.where("id = ?",  params[:deck_id]).first
   @card = @current_round.get_random_unsolved_card
 
@@ -7,6 +16,10 @@ get '/decks/:deck_id/cards/:card_id' do
 end
 
 post '/decks/:deck_id/cards/:card_id' do
+  # TESTING CODE
+  # session[:round_id] = 1 #UPDATE THIS IF DOING MORE TESTING
+  # END TESTING CODE
+
   @current_round = Round.where("id = ?", session[:round_id]).first
   @deck = Deck.where("id = ?",  params[:deck_id]).first
   @card = Card.where("id = ?", params[:card_id]).first
@@ -18,8 +31,6 @@ post '/decks/:deck_id/cards/:card_id' do
   @guess.save
 
   if @current_round.get_unsolved_cards.length > 0
-    redirect to '/guesses/:guess_id'
-  else
-    redirect to '/' # NOT THE CORRECT TARGET, NOT SURE WHICH URL TO REDIRECT TO YET
+    redirect to "/guesses/#{@guess.id}"
   end
 end
