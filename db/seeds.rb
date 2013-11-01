@@ -27,3 +27,9 @@ user_1.save
 
 user_2 = User.new(:email => "kent@gmail.com", :password => "12345")
 user_2.save
+
+
+#Tara's card testing code
+Card.create({ question: "What is Tara's last name?", answer: "Roys", deck_id: 42})  
+Guess.create({ round_id: 42, card_id: 41, correct: true, response: "Roys"})
+Guess.create({ round_id: 42, card_id: 41, correct: false, response: "Roger"})
