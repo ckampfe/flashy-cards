@@ -1,4 +1,7 @@
 get '/' do
-  # Look in app/views/index.erb
-  erb :index
+  erb :splash
+end
+
+get '/login' do
+  erb :login
 end
