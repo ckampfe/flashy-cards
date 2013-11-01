@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Flashy Cards!</h1>
+
+  <br>
+  <form action="/decks/<%=@deck.id%>/cards/<%=@card.id%>" method="post">
+    <p><strong><%="#{@card.question}"%></strong></p>
+    <br>
+    <input type="text" name="user_response">
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
