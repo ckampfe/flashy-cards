@@ -53,5 +53,7 @@ post '/decks/:deck_id/cards/:card_id' do
 
   if @current_round.get_unsolved_cards.length > 0
     redirect to "/guesses/#{@guess.id}"
+  else 
+    redirect to "/rounds/#{@current_round}/statistics"
   end
 end
