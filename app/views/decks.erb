@@ -1,0 +1,16 @@
+<div class="container">
+
+	<h1>Welcome! <%= params[:name]%></h1>
+  <a href="/logout">Logout</a>
+  <h1>Choose your Flashcards</h1>
+
+  <% Deck.all.each do |deck| %>
+  <a href="/decks/<%=deck.id%>/cards"><%=deck.name%></a><br><br>
+  <%end%>
+	<br>
+	<br>
+	<br>
+  <button><a href="">Create Deck</a></button>
+
+
+</div>
