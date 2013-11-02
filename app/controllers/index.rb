@@ -1,4 +1,6 @@
 # get splash page
+enable :sessions
+
 get '/' do
   erb :splash
 end
