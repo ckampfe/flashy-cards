@@ -64,8 +64,11 @@ get '/decks' do
   end
 end
 
-get '/decks/:id/cards' do
-	p params[:id]
-	@deck = Deck.find_by_id(params[:id])
-	erb :cards
-end
+### COMMENTED OUT, USING ROUTE IN GUESS.RB NOW ###
+
+# get '/decks/:deck_id/cards' do
+# 	p params[:deck_id]
+# 	@deck = Deck.find_by_id(params[:id])
+# 	# erb :cards
+#   redirect to('/decks/:deck_id/draw_card')
+# end
