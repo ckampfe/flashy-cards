@@ -34,14 +34,15 @@ $(document).ready(function() {
      AND RECEIVE RESPONSE
 
      MANIPULATES DOM ON SUCESS
-     
+
      response is an object */
 
   function sendData(formData) {
     var posty = $.post(formData.url,
       { "user_response": formData.answer },
       function( response ) {
-        modifyDom(response);
+        // parse JSON and call DOM modifier
+        modifyDom(JSON.parse(response));
       }
     );
   }
@@ -54,7 +55,8 @@ $(document).ready(function() {
   }
 
   function whipeCard() {
-    $( "#card" ).children().fadeOut(400).remove();
+    $( "#card" ).children().fadeOut();
+    $( "#card" ).children().remove();
     /* insert extra bottom padding
        so as to preserve card size */
     $( "#card" ).css("padding-bottom", "6.3em");
@@ -62,5 +64,21 @@ $(document).ready(function() {
 
   function showAnswer(response) {
     console.log(response);
+    // reset padding
+    $( "#card" ).css("padding-bottom", "2em");
+    // append the goods
+    $( "#card").append(
+       "<h3 class=\"text-center\">" + response["outcome"] + "</h3>"
+      + "<p class=\"text-center\">The answer is " + response.answer
+      + "</p>"
+      + "<span class=\"next-center\"><a href=\"/decks/" + response.deck
+      + "/draw_card\">next card</a></span>"
+      + "</div>"
+    ).fadeIn(800);
+
   }
+
+
+  /* INSERT NEXT CARD EVENT HERE */
+
 });
