@@ -33,6 +33,21 @@ $(document).ready(function() {
   }
 
   function modifyDom(serverSays) {
-
+    whipeQuestion();
+    showAnswer(serverSays);
+    
   }
+
+  function whipeQuestion() {
+    $( "#card" ).children().fadeOut(400).remove();
+    /* insert extra bottom padding 
+       so as to preserve card size */
+    $( "#card" ).css("padding-bottom", "6.3em");
+  }
+
+
+
+
+
+
 });
