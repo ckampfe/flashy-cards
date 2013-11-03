@@ -21,7 +21,6 @@ $(document).ready(function() {
   function getFormData() {
     var url = $( "#answer-form" ).attr( "action" );
     var answer = $( "#answer-form > input" ).val();
-    console.log(url);
     return { "url": url, "answer": answer };
   }
 
@@ -29,13 +28,11 @@ $(document).ready(function() {
     var dataObject = { "user_response": formData.answer }
     console.log(dataObject);
     $.post(formData.url, dataObject, function( response ) {
-      console.log(response);
       return response;
     });
   }
 
   function modifyDom(serverSays) {
-    console.log("made it here!");
-    console.log(serverSays);
+
   }
 });
