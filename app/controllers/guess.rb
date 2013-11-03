@@ -23,8 +23,6 @@ get '/guesses/:guess_id/:ajax' do
               :deck    => @deck
              }
 
-    puts respy
-    puts respy.to_json
     respy.to_json
   else 
     erb :answer
@@ -57,21 +55,7 @@ post '/decks/:deck_id/cards/:card_id' do
   @deck = Deck.where("id = ?",  params[:deck_id]).first
   @card = Card.where("id = ?", params[:card_id]).first
 
-  puts "got here"
-
-  if request.xhr?
-    puts "got into ajax true"
-    ajax = true
-  else
-    puts "got into ajax false"
-    ajax = false
-  end
-
-  puts params
-  puts "got just before user response"
   user_response = params[:user_response]
-  puts params[:user_response]
-  puts user_response
   response_validity = @card.valid_response?(user_response)
 
   @guess = Guess.new(:round_id => @current_round.id, :card_id => @card.id, :response => user_response, :correct => response_validity)
@@ -80,7 +64,7 @@ post '/decks/:deck_id/cards/:card_id' do
 
   if @current_round.get_unsolved_cards.length > 0
 
-    if ajax
+    if request.xhr?
       redirect to "/guesses/#{@guess.id}/1"
     else
       redirect to "/guesses/#{@guess.id}/0"
