@@ -1,3 +1,7 @@
+* {
+  border: 1px dotted pink;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -6,4 +10,31 @@
 }
 th {
   text-align: left;
+}
+
+// LOGIN
+
+.login {
+  padding: 10px;
+}
+
+.login .field {
+  margin: 0 auto;
+  display: block;
+  padding: 2px;
+}
+
+.login .button {
+  margin-left: 34%;
+  padding: 12px;
+  width: auto;
+}
+
+.login .button #create {
+  display: inline;
+}
+
+#login {
+  margin-left: 0;
+  display: inline;
 }
