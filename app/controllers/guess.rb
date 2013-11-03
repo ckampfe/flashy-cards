@@ -30,7 +30,8 @@ get '/guesses/:guess_id/:ajax' do
 end 
 
 get '/decks/:deck_id/draw_card' do
-  @current_round = Round.where("id = ?", session[:round]).first
+  # @current_round = Round.where("id = ?", session[:round]).first
+  @current_round = session[:round]
 
   #TESTING CODE
   # user = User.create(:email => "kent@gmail.com", :password => 12345)
@@ -51,7 +52,8 @@ post '/decks/:deck_id/cards/:card_id' do
    # session[:round] = 1 #UPDATE THIS IF DOING MORE TESTING
   # END TESTING CODE
 
-  @current_round = Round.where("id = ?", session[:round]).first
+  # @current_round = Round.where("id = ?", session[:round]).first
+  @current_round = session[:round]
   @deck = Deck.where("id = ?",  params[:deck_id]).first
   @card = Card.where("id = ?", params[:card_id]).first
 
@@ -71,7 +73,10 @@ post '/decks/:deck_id/cards/:card_id' do
     end
 
   else 
-    redirect to "/rounds/#{@current_round.id}/statistics"
+    if request.xhr?
+      redirect to "/rounds/#{@current_round}/statistics"
+    else
+      redirect to "/rounds/#{@current_round}/statistics"
+    end
   end
 end
-

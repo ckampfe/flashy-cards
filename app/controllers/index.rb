@@ -74,7 +74,8 @@ get '/decks/:deck_id/cards' do
 end
 
 get '/rounds/:id/statistics' do 
-  current_round = session[:round_id]
+  # current_round = session[:round_id]
+  current_round = session[:round]
   # puts "ROUND: #{current_round.inspect}"
   current_deck = Deck.where("id = ?", current_round.deck_id).first
   #puts "CARDS IN DECK: #{current_deck.cards.count}"
