@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   /****** sends user input,
    *      receives response,
-   *      whipes card,
+   *      wipes card,
    *      redraws with answer *****/
 
   /* CAPTURE */
@@ -50,11 +50,11 @@ $(document).ready(function() {
   /* DOM MANIPULATION */
 
   function modifyDom(response) {
-    whipeCard();
+    wipeCard();
     showAnswer(response);
   }
 
-  function whipeCard() {
+  function wipeCard() {
     $( "#card" ).children().fadeOut();
     $( "#card" ).children().remove();
     /* insert extra bottom padding
