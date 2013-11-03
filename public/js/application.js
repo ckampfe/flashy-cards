@@ -1,22 +1,28 @@
 $(document).ready(function() {
 
-  /* AJAX TO POST CARD ANSWER */
+  /****** sends user input,
+   *      receives response,
+   *      whipes card,
+   *      redraws with answer *****/
 
-  // this is the event
+  /* CAPTURE */
+
   $( "#answer-form" ).on( "submit", function(event) {
     event.preventDefault();
-    // this calls the subroutines
     answerQuestion();
   });
+
+  /* CALL SUBROUTINES */
 
   function answerQuestion() {
     // get data from form
     var formData = getFormData();
     // send data to server and receive response
-    var serverSays = sendData(formData); 
-    // modify DOM / fade 
-    modifyDom(serverSays); 
+    sendData(formData);
   }
+
+  /* READ AND PACKAGE DATA FROM FORM
+     returned as an object */
 
   function getFormData() {
     var url = $( "#answer-form" ).attr( "action" );
@@ -24,30 +30,37 @@ $(document).ready(function() {
     return { "url": url, "answer": answer };
   }
 
+  /* AJAX SENDS FORM DATA
+     AND RECEIVE RESPONSE
+
+     MANIPULATES DOM ON SUCESS
+     
+     response is an object */
+
   function sendData(formData) {
-    var dataObject = { "user_response": formData.answer }
-    console.log(dataObject);
-    $.post(formData.url, dataObject, function( response ) {
-      return response;
-    });
+    var posty = $.post(formData.url,
+      { "user_response": formData.answer },
+      function( response ) {
+        modifyDom(response);
+      }
+    );
   }
 
-  function modifyDom(serverSays) {
-    whipeQuestion();
-    showAnswer(serverSays);
-    
+  /* DOM MANIPULATION */
+
+  function modifyDom(response) {
+    whipeCard();
+    showAnswer(response);
   }
 
-  function whipeQuestion() {
+  function whipeCard() {
     $( "#card" ).children().fadeOut(400).remove();
-    /* insert extra bottom padding 
+    /* insert extra bottom padding
        so as to preserve card size */
     $( "#card" ).css("padding-bottom", "6.3em");
   }
 
-
-
-
-
-
+  function showAnswer(response) {
+    console.log(response);
+  }
 });
