@@ -47,8 +47,14 @@ th {
 
 .logout {
   float: right;
-  margin: 3px;
+  margin: 2px;
 }
 
+.deck {
+  list-style: none;
+  padding: 8px;
+}
 
-
+#create-deck {
+  margin: 0 0 0 20%;
+}
