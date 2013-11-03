@@ -71,6 +71,7 @@ post '/decks/:deck_id/cards/:card_id' do
     end
 
   else 
-    redirect to "/rounds/#{@current_round}/statistics"
+    redirect to "/rounds/#{@current_round.id}/statistics"
   end
 end
+

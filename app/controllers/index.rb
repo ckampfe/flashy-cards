@@ -72,3 +72,16 @@ get '/decks/:deck_id/cards' do
                                    )
   redirect to("/decks/#{params[:deck_id]}/draw_card")
 end
+
+get '/rounds/:id/statistics' do 
+  current_round = session[:round_id]
+  # puts "ROUND: #{current_round.inspect}"
+  current_deck = Deck.where("id = ?", current_round.deck_id).first
+  #puts "CARDS IN DECK: #{current_deck.cards.count}"
+  @number_cards_in_deck = current_deck.cards.count #TOTAL CARDS IN DECK, NOT CORRECT ON FIRST GUESS
+  
+#  @total_cards_in_deck = 10
+  @total_guesses = current_round.guesses.count
+  erb :statistics
+
+end 
