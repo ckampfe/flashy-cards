@@ -1,11 +1,12 @@
 <div class="container">
   <h1>Flashy Cards!</h1>
 
-  <br>
+  <div id="card">
+    <span id="question"><h2><%="#{@card.question}"%></h2></span>
+  </div>
+
   <form action="/decks/<%=@deck.id%>/cards/<%=@card.id%>" method="post">
-    <p><strong><%="#{@card.question}"%></strong></p>
-    <br>
-    <input type="text" name="user_response">
+    <input class="field center" type="text" name="user_response">
     <input type="submit" value="Submit">
   </form>
 

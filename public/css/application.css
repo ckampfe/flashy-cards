@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 * {
   border: 1px dotted pink;
 }
@@ -8,9 +10,11 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
 }
+
 
 /* LOGIN */
 
@@ -39,6 +43,7 @@ th {
   display: inline;
 }
 
+
 /* PROFILE / DECKS */
 
 #welcome {
@@ -57,4 +62,23 @@ th {
 
 #create-deck {
   margin: 0 0 0 20%;
+}
+
+/* CARD */
+
+#card {
+  padding: 2em;
+  margin: 25px;
+  border: 1px solid gray;
+  box-shadow: 0 0 20px black;
+}
+
+#question {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.center {
+  margin: 0 0 0 28%;
 }
