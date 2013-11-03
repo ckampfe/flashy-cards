@@ -1,11 +1,8 @@
 <div class="container">
-
 	<h2 id="welcome">Welcome! <%= params[:name]%></h2>
   <a href="/logout" class="logout">Logout</a>
   <a href="" id="create-deck">Create Deck</a>
-
   <h1>Choose your Flashcards</h1>
-
   <ul>
     <% Deck.all.each do |deck| %>
     <li class="deck"><a href="/decks/<%=deck.id%>/cards"><%=deck.name%></a></li>
