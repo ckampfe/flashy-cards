@@ -1,9 +1,8 @@
 <div class="container">
 
   <div id="card">
-    <h3><%= @outcome %></h3>
-    <p> The answer is <%= @answer %> </p>
-
-    <a href=<%= "/decks/#{@deck}/draw_card" %>> next card </a>
+    <h3 class="text-center"><%= @outcome %></h3>
+    <p class="text-center"> The answer is <%= @answer %> </p>
+    <span class="next-center"><a href=<%= "/decks/#{@deck}/draw_card" %>>next card</a></span>
   </div>
 </div>

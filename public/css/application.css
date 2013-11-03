@@ -99,7 +99,7 @@ li.deck {
   margin: 0 0 0 6%;
 }
 
-/* CARD */
+/* CARD-STUFF, YO */
 
 #card {
   padding: 2em;
@@ -118,4 +118,12 @@ li.deck {
 
 .center {
   margin: 0 0 0 28%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.next-center {
+  margin: 0 43%;
 }
