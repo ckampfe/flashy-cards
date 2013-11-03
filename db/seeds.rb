@@ -33,3 +33,9 @@ user_2.save
 Card.create({ question: "What is Tara's last name?", answer: "Roys", deck_id: 42})  
 Guess.create({ round_id: 42, card_id: 41, correct: true, response: "Roys"})
 Guess.create({ round_id: 42, card_id: 41, correct: false, response: "Roger"})
+
+Deck.create(name: "test")
+
+Card.create(question: "0+0", answer: "0", deck_id: "3")
+Card.create(question: "1+1", answer: "2", deck_id: "3")
+Card.create(question: "2+2", answer: "4", deck_id: "3")

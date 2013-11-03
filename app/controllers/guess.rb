@@ -54,6 +54,15 @@ post '/decks/:deck_id/cards/:card_id' do
   if @current_round.get_unsolved_cards.length > 0
     redirect to "/guesses/#{@guess.id}"
   else 
-    redirect to "/rounds/#{@current_round}/statistics"
+    redirect to "/rounds/#{@current_round.id}/statistics"
   end
 end
+
+get '/rounds/:id/statistics' do
+  # puts params
+  @guesses = Guess.find_all_by_round_id(params[:id])
+  @true = Guess.where("correct = ?, round= ?", true, params[:id])
+  puts @guesses.length
+  puts @guesses.each { |g| g if g.correct == true }
+  
+  end
