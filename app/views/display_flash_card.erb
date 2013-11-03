@@ -4,7 +4,7 @@
     <span id="question"><h2><%="#{@card.question}"%></h2></span>
   </div>
 
-  <form action="/decks/<%=@deck.id%>/cards/<%=@card.id%>" method="post">
+  <form id="answer-form" action="/decks/<%=@deck.id%>/cards/<%=@card.id%>" method="post">
     <input class="field center" type="text" name="user_response">
     <input type="submit" value="Submit">
   </form>
