@@ -67,7 +67,7 @@ end
 get '/decks/:deck_id/cards' do
 	p params[:deck_id]
 	# @deck = Deck.find_by_id(params[:deck_id])
-  session[:round_id] = Round.create(:deck_id => params[:deck_id],
+  session[:round] = Round.create(:deck_id => params[:deck_id],
                                     :user_id => session[:user_id]
                                    )
   redirect to("/decks/#{params[:deck_id]}/draw_card")

@@ -30,7 +30,7 @@ get '/guesses/:guess_id/:ajax' do
 end 
 
 get '/decks/:deck_id/draw_card' do
-  @current_round = Round.where("id = ?", session[:round_id]).first
+  @current_round = Round.where("id = ?", session[:round]).first
 
   #TESTING CODE
   # user = User.create(:email => "kent@gmail.com", :password => 12345)
@@ -48,10 +48,10 @@ end
 
 post '/decks/:deck_id/cards/:card_id' do
   #TESTING CODE
-   # session[:round_id] = 1 #UPDATE THIS IF DOING MORE TESTING
+   # session[:round] = 1 #UPDATE THIS IF DOING MORE TESTING
   # END TESTING CODE
 
-  @current_round = Round.where("id = ?", session[:round_id]).first
+  @current_round = Round.where("id = ?", session[:round]).first
   @deck = Deck.where("id = ?",  params[:deck_id]).first
   @card = Card.where("id = ?", params[:card_id]).first
 
