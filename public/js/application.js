@@ -78,7 +78,6 @@ $(document).ready(function() {
 
   }
 
-
   /* INSERT NEXT CARD EVENT HERE */
 
 });
