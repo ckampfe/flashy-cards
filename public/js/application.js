@@ -43,20 +43,23 @@ $(document).ready(function() {
       function( response ) {
         // parse JSON and call DOM modifier
 
-       
+
         console.log(response);
 
         try {
           modifyDom(JSON.parse(response));
         } catch(error) {
-          // $(document).empty()
-          $('body').html(response);
+          //$(document).children.remove()
+          //$('body').html(response);
+          var newDoc = document.open("text/html", "replace");
+          newDoc.write(response);
+          newDoc.close();
         }
       }
     );
 
       }
- 
+
   /* DOM MANIPULATION */
 
   function modifyDom(response) {

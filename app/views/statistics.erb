@@ -1,6 +1,9 @@
-  <div id="statistics">
-    <p> You got <%= @number_cards_in_deck %> cards right. </p>
-    <p> You made <%= @total_guesses %> guesses. </p> 
-    <p> Your score for this deck is <%= ((@number_cards_in_deck.to_f/@total_guesses).round(2)*100).to_s + '%' %> </p>
-    <a href=<%= "/decks" %>> Choose another deck </a>
+<div class="container">
+  <div id="card">
+      <p class="text-center">You got <%= @number_cards_in_deck %> cards right. </p>
+      <p class="text-center">You made <%= @total_guesses %> guesses. </p>
+      <p class="text-center">Your score for this deck is <%= ((@number_cards_in_deck.to_f/@total_guesses).round(2)*100).to_s + '%' %> </p>
+
+      <span style="margin-left:34%" ><a href="/decks" class="spancent">Choose another deck</a></span>
   </div>
+</div>
