@@ -79,5 +79,16 @@ post '/decks/:deck_id/cards/:card_id' do
     else
       redirect to "/rounds/#{@current_round.id}/statistics"
     end
+
+    redirect to "/rounds/#{@current_round.id}/statistics"
   end
 end
+
+get '/rounds/:id/statistics' do
+  # puts params
+  @guesses = Guess.find_all_by_round_id(params[:id])
+  @true = Guess.where("correct = ?, round= ?", true, params[:id])
+  puts @guesses.length
+  puts @guesses.each { |g| g if g.correct == true }
+  
+  end
