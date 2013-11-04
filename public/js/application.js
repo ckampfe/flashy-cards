@@ -42,11 +42,21 @@ $(document).ready(function() {
       { "user_response": formData.answer },
       function( response ) {
         // parse JSON and call DOM modifier
-        modifyDom(JSON.parse(response));
-      }
-    );
-  }
 
+       
+        console.log(response);
+
+        try {
+          modifyDom(JSON.parse(response));
+        } catch(error) {
+          // $(document).empty()
+          $('body').html(response);
+        }
+      }
+    ).fadeIn(800);
+
+      }
+ 
   /* DOM MANIPULATION */
 
   function modifyDom(response) {

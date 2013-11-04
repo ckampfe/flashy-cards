@@ -54,6 +54,7 @@ post '/decks/:deck_id/cards/:card_id' do
 
   # @current_round = Round.where("id = ?", session[:round]).first
   @current_round = session[:round]
+  
   @deck = Deck.where("id = ?",  params[:deck_id]).first
   @card = Card.where("id = ?", params[:card_id]).first
 
@@ -74,9 +75,9 @@ post '/decks/:deck_id/cards/:card_id' do
 
   else 
     if request.xhr?
-      redirect to "/rounds/#{@current_round}/statistics"
+      redirect to "/rounds/#{@current_round.id}/statistics"
     else
-      redirect to "/rounds/#{@current_round}/statistics"
+      redirect to "/rounds/#{@current_round.id}/statistics"
     end
   end
 end
