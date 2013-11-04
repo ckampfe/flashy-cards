@@ -51,6 +51,10 @@ $(document).ready(function() {
         } catch(error) {
           //$(document).children.remove()
           //$('body').html(response);
+          
+          /* I did it this way because the other way
+             was duplicating the <head> tag content, such
+             that it was in both <head> and <body>. */
           var newDoc = document.open("text/html", "replace");
           newDoc.write(response);
           newDoc.close();
